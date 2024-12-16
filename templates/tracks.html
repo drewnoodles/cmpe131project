@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <style>
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(120deg, #1db954, #121212);
+            animation: pulse 5s infinite;
+        }
+    
+        @keyframes pulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+    </style>
+    <div class="stats-summary">
+        <h2>Your 2024 Stats</h2>
+        <button onclick="location.href='/getStats';">See Top Artists</button>
+    </div>
+    <head>
+        <title>Your 2024 Spotify Wrapped</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                height: 100vh;
+                margin: 0;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                color: #1db954;
+            }
+
+            .track-list {
+                display: none; /* Initially hidden */
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                margin: 5px 0;
+                padding: 10px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            button {
+                margin: 10px;
+                padding: 10px 20px;
+                background-color: #1db954;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            button:hover {
+                background-color: #14833b;
+            }
+
+            .button-container {
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Your Top Tracks</h1>
+        <div class="button-container">
+            <!-- Buttons for each term -->
+            <button onclick="showSection('short-term')">Short Term (Last 4 Weeks)</button>
+            <button onclick="showSection('medium-term')">Medium Term (Last 6 Months)</button>
+            <button onclick="showSection('long-term')">Long Term (All Time)</button>
+        </div>
+
+        <!-- Short Term -->
+        <div id="short-term" class="track-list">
+            <ul>
+                {% for track in short_track %}
+                    <li>
+                        <strong>{{ track['name'] }}</strong> by {{ track['artists'][0]['name'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Medium Term -->
+        <div id="medium-term" class="track-list">
+            <ul>
+                {% for track in med_track %}
+                    <li>
+                        <strong>{{ track['name'] }}</strong> by {{ track['artists'][0]['name'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Long Term -->
+        <div id="long-term" class="track-list">
+            <ul>
+                {% for track in long_track %}
+                    <li>
+                        <strong>{{ track['name'] }}</strong> by {{ track['artists'][0]['name'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <script>
+            function showSection(sectionId) {
+                // Hide all track lists
+                const sections = document.querySelectorAll('.track-list');
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Show the selected section
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.style.display = 'block';
+                }
+            }
+        </script>
+    </body>
+</html>

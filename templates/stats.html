@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Your 2024 Spotify Stats</title>
+        <style>
+            body {
+                background: linear-gradient(120deg, #1db954, #191414);
+                color: white;
+                text-align: center;
+                font-family: Arial, sans-serif;
+            }
+
+            .artist-card {
+                display: inline-block;
+                background: #282828;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 200px;
+            }
+
+            .artist-card img {
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Your Top Artists</h1>
+        <div>
+            {% for artist in top_artists %}
+                <div class="artist-card">
+                    <img src="{{ artist['images'][0]['url'] }}" alt="{{ artist['name'] }}">
+                    <h3>{{ artist['name'] }}</h3>
+                    <p>Genres: {{ ', '.join(artist['genres'][:3]) }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

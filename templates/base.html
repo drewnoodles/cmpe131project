@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>{{ title }}</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(135deg, #1db954, #191414);
+                color: white;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+
+            .spotifyButton {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+                background-color: #1db954;
+                border: none;
+                color: white;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .spotifyButton:hover {
+                background-color: #14833b;
+                transform: scale(1.1);
+            }
+
+            .info {
+                margin-top: 20px;
+                font-size: 1rem;
+                font-style: italic;
+                color: #cfcfcf;
+            }
+
+            footer {
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+                color: #cfcfcf;
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Welcome to Your Spotify Wrapped!</h1>
+            <h2>Click to generate your personalized recap for 2024!</h2>
+    
+            <button class="spotifyButton" onclick="location.href = '/login';">Log in with Spotify</button>
+
+            <p class="info">
+                This website is inspired by Spotify Wrapped 2024 and created for CMPE-131.
+            </p>
+        </div>
+        
+        <footer>
+            Built with <span style="color: red;">&hearts;</span> by Andrew Reyes.
+        </footer>
+    </body>
+</html>
